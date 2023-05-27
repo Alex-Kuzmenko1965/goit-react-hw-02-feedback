@@ -1,25 +1,17 @@
-// import PropTypes from 'prop-types';
-import { Stats } from '../Stats/Stats';
-import cl from './Statistics.module.css';
+// import cl from './Statistics.module.css';
 
-export const Statistics = ({ title, stat }) => {
+export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
-    <section className = {cl.statistics}>
-      {title ? (<h2 className = {cl.title}>{title}</h2>) : (<></>)}
-      <ul className = {cl.stat_list}>
-      {stat.map(({ id, label, percentage }) => {
-        return (
-          <li style = {{backgroundColor: getRandomHexColor()}} className = {cl.item} key={id}>
-            <span className = {cl.label}>{label}</span><br/>
-            <span className = {cl.percentage}>{percentage}%</span>
-          </li>    
-        );    
-      })}
-      </ul>
-    </section>
-  );  
-};
-
-const getRandomHexColor = () => {
-  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
-}
+    <>
+    {(positivePercentage > 0) ? (
+    <>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total: {total}</p>
+      <p>Positive feedback: {positivePercentage}</p>
+    </>
+  ) : <p>There is no feedback</p>}    
+  </>
+  );
+} 
