@@ -1,3 +1,4 @@
+import { Notification } from '../Notification/Notification';
 // import cl from './Statistics.module.css';
 
 export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
@@ -11,7 +12,7 @@ export const Statistics = ({ good, neutral, bad, total, positivePercentage }) =>
       <p>Total: {total}</p>
       <p>Positive feedback: {positivePercentage}</p>
     </>
-  ) : <p>There is no feedback</p>}    
+  ) : <Notification message="There is no feedback" />}    
   </>
   );
 } 
