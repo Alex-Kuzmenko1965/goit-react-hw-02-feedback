@@ -30,19 +30,7 @@ export default class App extends Component {
     }));
     }
   };
-
-  // countTotalFeedback() {
-  //   const total = this.state.good + this.state.bad + this.state.neutral;
-  //   console.log(total);
-  //   return total;
-  // };
-
-  // countPositiveFeedbackPercentage() {
-  //   const positivePercentage = (this.state.good / this.total).toFixed(2);
-  //   console.log(positivePercentage);
-  //   return positivePercentage;
-  // };
-
+  
   render() {
     const { good, neutral, bad } = this.state;    
     const total = good + neutral + bad;
