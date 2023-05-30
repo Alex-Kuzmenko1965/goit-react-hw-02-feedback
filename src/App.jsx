@@ -12,34 +12,28 @@ export default class App extends Component {
   
   onLeaveFeedback = (event) => {    
     // console.log(event.target.name);
-    const options = event.target.name;
-    console.log(options);
-    if (options === "good") {
-      this.setState((prevState) => ({
-      good: (prevState.good += 1),        
-    }));} 
-    if (options === "bad") {
-      this.setState((prevState) => ({
-      bad: (prevState.bad += 1),        
-    }));}
-    if (options === "neutral") {
-      this.setState((prevState) => ({
-      neutral: (prevState.neutral += 1),        
+    const option = event.target.name;
+    console.log(option);
+    this.setState((prevState) => ({
+    [option]: (prevState[option] += 1),        
     }));
-    }
   };
   
   render() {
-    const { good, neutral, bad } = this.state;    
+    const { good, neutral, bad } = this.state;
+    const options = Object.keys(this.state);
+    console.log(options);
     const total = good + neutral + bad;
     console.log(total);
-    const positivePercentage = (good / total).toFixed(2);
+    const positivePercentage = ((good / total) * 100).toFixed(0);
     console.log(positivePercentage);    
 
   return (
     <>    
     <Section title={"Please leave feedback"}>   
-      <FeedbackOptions  onLeaveFeedback = {this.onLeaveFeedback} />
+      <FeedbackOptions
+      options = {options}
+      onLeaveFeedback = {this.onLeaveFeedback} />
     </Section>
     <Section title={"Statistics"}>
       <Statistics  good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />

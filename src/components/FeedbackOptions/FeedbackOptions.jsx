@@ -1,11 +1,10 @@
 // import cl from './FeedbackOptions.module.css';
 
-export const FeedbackOptions = ({onLeaveFeedback}) => {
+export const FeedbackOptions = ({options, onLeaveFeedback}) => {
   return (
     <>
-    <button name = "good"  onClick={onLeaveFeedback}>Good</button>
-    <button name = "neutral" onClick={onLeaveFeedback}>Neutral</button>
-    <button name = "bad" onClick={onLeaveFeedback}>Bad</button>
+    {options.map(name => {
+    return (<button name = {name}  onClick={onLeaveFeedback}>{name.slice(0,1).toUpperCase() + name.slice(1)}</button>);})}    
     </>
   );
 };
